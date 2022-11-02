@@ -60,18 +60,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      ///Use dictionary [data] keys to get tab qty
       length: data.length,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Homework example'),
           bottom: TabBar(
+            ///Use dictionary [data] keys to get tab names
             tabs: data.keys.map((item) => Tab(text: item)).toList(),
           ),
         ),
         body: TabBarView(
+          ///Use dictionary [data] values for each key to create images listview
           children: data.values.map((name) => ListView(
               key: PageStorageKey(name),
               children: <Widget>[
+                ///Get images from network
                 ...name.map((e) => Image.network(e)).toList()
               ],
             )
